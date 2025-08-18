@@ -8,15 +8,17 @@ int main(){
     setlocale(LC_ALL,"");
 
         char tabuleiro[tam][tam];
+        int linha, coluna;
 
         for(int i=0; i < tam; i++){
             for(int j=0; j < tam; j++){
-                tabuleiro[i][j] = 'x';
+                tabuleiro[i][j] = ' ';
             }
         }
 
         printf(" 0     1     2\n");
         printf("\n");
+
         for(int i=0; i < tam; i++){
             for(int j=0; j < tam; j++){
                 printf(" %c ",tabuleiro[i][j]);
@@ -32,5 +34,18 @@ int main(){
             }
         }
         printf("\n");
+
+        do{
+            printf("\nDigite a posição desejada\nLInha:");
+                scanf("%d",&linha);
+            printf("Coluna: ");
+                scanf("%d",&coluna);
+            if(linha<0 || linha>2 || coluna<0 || coluna>2){
+                printf("Opção invalida !!!");
+            }else if(tabuleiro[linha][coluna] != ' ') {
+                printf("Posição já ocupada!\n");
+            }
+        }while(linha<0 || linha>2 || coluna<0 || coluna>2 || tabuleiro[linha][coluna] != ' ');
+
     return 0;
 }
