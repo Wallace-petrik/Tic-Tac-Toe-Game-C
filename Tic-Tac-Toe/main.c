@@ -67,5 +67,15 @@ int main(){
                 ganhou = 1;
         }
 
+        for(int i = 0; i < tam; i++){
+            if(tabuleiro[0][i] == 'O' & tabuleiro[1][i] == 'O' & tabuleiro[2][i] == 'O');
+                ganhou = 1;
+        }
+
+        for(int i = 0; i < tam; i++){
+            if(tabuleiro[0][i] == 'X' & tabuleiro[1][i] == 'X' & tabuleiro[2][i] == 'X');
+                ganhou = 1;
+        }
+
     return 0;
 }
