@@ -9,6 +9,8 @@ int main(){
 
         char tabuleiro[tam][tam];
         int linha, coluna;
+        int jogador = 1;
+
 
         for(int i=0; i < tam; i++){
             for(int j=0; j < tam; j++){
@@ -46,6 +48,16 @@ int main(){
                 printf("Posição já ocupada!\n");
             }
         }while(linha<0 || linha>2 || coluna<0 || coluna>2 || tabuleiro[linha][coluna] != ' ');
+
+        if(jogador == 1){
+            tabuleiro[linha][coluna] = 'O';
+            jogador++;
+        }else{
+            tabuleiro[linha][coluna] = 'X';
+            jogador = 1;
+        }
+
+
 
     return 0;
 }
