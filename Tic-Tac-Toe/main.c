@@ -7,16 +7,17 @@
 int main(){
     setlocale(LC_ALL,"");
 
-        char tabuleiro[tam][tam];
-        int linha, coluna;
-        int jogador = 1;
-        int ganhou = 0;
+    char tabuleiro[tam][tam];
+    int linha, coluna;
+    int jogador = 1;
+    int ganhou = 0;
 
-        for(int i=0; i < tam; i++){
-            for(int j=0; j < tam; j++){
-                tabuleiro[i][j] = ' ';
-            }
+    for(int i=0; i < tam; i++){
+        for(int j=0; j < tam; j++){
+            tabuleiro[i][j] = ' ';
         }
+    }
+
 
         printf(" 0     1     2\n");
         printf("\n");
@@ -84,6 +85,16 @@ int main(){
         if(tabuleiro[0][0] == 'X' & tabuleiro[1][1] == 'X' & tabuleiro[2][2] == 'X'){
             ganhou = 2;
         }
+
+        if(tabuleiro[0][2] == 'O' & tabuleiro[1][1] == 'O' & tabuleiro[2][0] == 'O'){
+            ganhou = 1;
+        }
+
+        if(tabuleiro[0][2] == 'X' & tabuleiro[1][1] == 'X' & tabuleiro[2][0] == 'X'){
+            ganhou = 2;
+        }
+
+
 
     return 0;
 }
