@@ -77,5 +77,13 @@ int main(){
                 ganhou = 1;
         }
 
+        if(tabuleiro[0][0] == 'O' & tabuleiro[1][1] == 'O' & tabuleiro[2][2] == 'O'){
+            ganhou = 1;
+        }
+
+        if(tabuleiro[0][0] == 'X' & tabuleiro[1][1] == 'X' & tabuleiro[2][2] == 'X'){
+            ganhou = 2;
+        }
+
     return 0;
 }
