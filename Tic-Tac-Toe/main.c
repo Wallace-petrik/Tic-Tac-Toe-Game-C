@@ -10,7 +10,7 @@ int main(){
         char tabuleiro[tam][tam];
         int linha, coluna;
         int jogador = 1;
-
+        int ganhou = 0;
 
         for(int i=0; i < tam; i++){
             for(int j=0; j < tam; j++){
@@ -57,7 +57,15 @@ int main(){
             jogador = 1;
         }
 
+        for(int i = 0; i < tam; i++){
+            if(tabuleiro[i][0] == 'O' & tabuleiro[i][1] == 'O' & tabuleiro[i][2] == 'O');
+                ganhou = 1;
+        }
 
+        for(int i = 0; i < tam; i++){
+            if(tabuleiro[i][0] == 'X' & tabuleiro[i][1] == 'X' & tabuleiro[i][2] == 'X');
+                ganhou = 1;
+        }
 
     return 0;
 }
