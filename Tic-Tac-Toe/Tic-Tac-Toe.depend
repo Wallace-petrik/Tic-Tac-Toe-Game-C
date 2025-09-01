@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1755812265 source:c:\users\petrik\documents\meusrepositoios\tic-tac-toe-game-c\tic-tac-toe\main.c
+1755813912 source:c:\users\petrik\documents\meusrepositoios\tic-tac-toe-game-c\tic-tac-toe\main.c
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
+	<graphics.h>
 
