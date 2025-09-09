@@ -10,6 +10,8 @@ char tabuleiro[tam][tam];
 void imprimirJogo();
 void inicializarJogo();
 void lerCoordenadas(int jogador);
+int atualizarJogador(int jogador);
+int salvarCoordenadas(int jogador);
 
 int main(){
     setlocale(LC_ALL,"");
@@ -31,15 +33,9 @@ int main(){
 
             lerCoordenadas(jogador);
 
-                if(jogador == 1){
-                    tabuleiro[linha][coluna] = 'O';
-                    jogador++;
-                }else{
-                    tabuleiro[linha][coluna] = 'X';
-                    jogador = 1;
-                }
+            jogadas += salvarCoordenadas(jogador);
 
-                jogadas++;
+            jogador =atualizarJogador(jogador);
 
                 for(int i = 0; i < tam; i++){
                     if(tabuleiro[i][0] == 'O' && tabuleiro[i][1] == 'O' && tabuleiro[i][2] == 'O')
@@ -147,5 +143,23 @@ void lerCoordenadas(int jogador){
     }while(linha<0 || linha>2 || coluna<0 || coluna>2 || tabuleiro[linha][coluna] != ' ');
 }
 
+int salvarCoordenadas(int jogador){
 
+    if(jogador == 1){
+        tabuleiro[linha][coluna] = 'O';
+    }else{
+        tabuleiro[linha][coluna] = 'X';
+    }
+    return 1;
+}
+
+int atualizarJogador(int jogador){
+
+    if(jogador==1){
+        jogador = 2;
+    }else{
+        jogador = 1;
+    }
+    return jogador;
+}
 
