@@ -4,16 +4,18 @@
 
 #define tam 3
 
+int linha, coluna;
 char tabuleiro[tam][tam];
 
 void imprimirJogo();
 void inicializarJogo();
+void lerCoordenadas(int jogador);
 
 int main(){
     setlocale(LC_ALL,"");
 
 
-    int linha, coluna,opcao;
+    int opcao;
     int jogador,ganhou,jogadas;
 
     do{
@@ -27,19 +29,7 @@ int main(){
 
             imprimirJogo();
 
-            do{
-                printf("\nDigite a posição desejada jogador %d\nLinha:",jogador);
-                    scanf("%d",&linha);
-                printf("Coluna: ");
-                    scanf("%d%*c",&coluna);
-                if(linha<0 || linha>2 || coluna<0 || coluna>2){
-                    printf("Opção invalida !!!");
-                    getchar();
-                }else if(tabuleiro[linha][coluna] != ' ') {
-                    printf("Posição já ocupada!\n");
-                    getchar();
-                }
-            }while(linha<0 || linha>2 || coluna<0 || coluna>2 || tabuleiro[linha][coluna] != ' ');
+            lerCoordenadas(jogador);
 
                 if(jogador == 1){
                     tabuleiro[linha][coluna] = 'O';
@@ -139,6 +129,22 @@ void imprimirJogo(){
     }
 
     printf("\n");
+}
+
+void lerCoordenadas(int jogador){
+    do{
+        printf("\nDigite a posição desejada jogador %d\nLinha:",jogador);
+            scanf("%d",&linha);
+        printf("Coluna: ");
+            scanf("%d%*c",&coluna);
+        if(linha<0 || linha>2 || coluna<0 || coluna>2){
+            printf("Opção invalida !!!");
+            getchar();
+        }else if(tabuleiro[linha][coluna] != ' ') {
+            printf("Posição já ocupada!\n");
+            getchar();
+        }
+    }while(linha<0 || linha>2 || coluna<0 || coluna>2 || tabuleiro[linha][coluna] != ' ');
 }
 
 
