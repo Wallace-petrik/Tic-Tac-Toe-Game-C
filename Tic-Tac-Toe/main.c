@@ -6,6 +6,9 @@
 
 char tabuleiro[tam][tam];
 
+void imprimirJogo();
+void inicializarJogo();
+
 int main(){
     setlocale(LC_ALL,"");
 
@@ -17,32 +20,12 @@ int main(){
         jogador = 1;
         ganhou = 0;
         jogadas = 0;
-        for(int i=0; i < tam; i++){
-            for(int j=0; j < tam; j++){
-                tabuleiro[i][j] = ' ';
-            }
-        }
+
+        inicializarJogo();
 
         do{
-            printf(" 0     1     2\n");
-            printf("\n");
 
-            for(int i=0; i < tam; i++){
-                for(int j=0; j < tam; j++){
-                    printf(" %c ",tabuleiro[i][j]);
-                    if(j<2){
-                        printf(" | ");
-                    }
-                    if(j==2){
-                        printf("  %d ",i);
-                    }
-                }
-                if(i<2){
-                    printf("\n--------------\n");
-                }
-            }
-
-            printf("\n");
+            imprimirJogo();
 
             do{
                 printf("\nDigite a posição desejada jogador %d\nLinha:",jogador);
@@ -110,25 +93,7 @@ int main(){
 
         system("cls");
 
-        printf(" 0     1     2\n");
-        printf("\n");
-
-        for(int i=0; i < tam; i++){
-            for(int j=0; j < tam; j++){
-                printf(" %c ",tabuleiro[i][j]);
-                if(j<2){
-                    printf(" | ");
-                }
-                if(j==2){
-                    printf("  %d ",i);
-                }
-            }
-            if(i<2){
-                printf("\n--------------\n");
-            }
-        }
-
-        printf("\n");
+        imprimirJogo();
 
         if(ganhou==1){
             printf("\nParabens jogador 1 você ganhou !!!\n");
@@ -153,3 +118,28 @@ void inicializarJogo(){
         }
     }
 }
+
+void imprimirJogo(){
+    printf(" 0     1     2\n");
+    printf("\n");
+
+    for(int i=0; i < tam; i++){
+        for(int j=0; j < tam; j++){
+            printf(" %c ",tabuleiro[i][j]);
+            if(j<2){
+                printf(" | ");
+            }
+            if(j==2){
+                printf("  %d ",i);
+            }
+        }
+        if(i<2){
+            printf("\n--------------\n");
+        }
+    }
+
+    printf("\n");
+}
+
+
+
