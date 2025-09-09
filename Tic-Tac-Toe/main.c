@@ -4,10 +4,12 @@
 
 #define tam 3
 
+char tabuleiro[tam][tam];
+
 int main(){
     setlocale(LC_ALL,"");
 
-    char tabuleiro[tam][tam];
+
     int linha, coluna,opcao;
     int jogador,ganhou,jogadas;
 
@@ -142,4 +144,12 @@ int main(){
 
     }while(opcao==1);
     return 0;
+}
+
+void inicializarJogo(){
+    for(int i=0; i < tam; i++){
+        for(int j=0; j < tam; j++){
+            tabuleiro[i][j] = ' ';
+        }
+    }
 }
