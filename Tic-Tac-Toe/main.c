@@ -13,7 +13,6 @@ void lerCoordenadas(int jogador);
 
 int ganhouPorLinhas();
 int ganhouPorColunas();
-
 int ganhouPorLinha(char c);
 int ganhadorDiagPrincipal();
 int ganhouPorColuna(char c);
@@ -22,6 +21,7 @@ int ganhouDiagPrincipal(char c);
 int ganhouDiagSecundaria(char c);
 int atualizarJogador(int jogador);
 int salvarCoordenadas(int jogador);
+int jogar(int jogadas, int jogador, int ganhou);
 
 int main(){
     setlocale(LC_ALL,"");
@@ -37,27 +37,7 @@ int main(){
 
         inicializarJogo();
 
-        do{
-
-            imprimirJogo();
-
-            lerCoordenadas(jogador);
-
-            jogadas += salvarCoordenadas(jogador);
-
-            jogador =atualizarJogador(jogador);
-
-            ganhou = ganhouPorLinhas();
-
-            ganhou = ganhouPorColunas();
-
-            ganhou = ganhadorDiagPrincipal();
-
-            ganhou = ganhadorDiagSecundaria();
-
-            system("cls");
-
-        }while(ganhou == 0 && jogadas <9);
+        ganhou = jogar(jogadas,jogador,ganhou);
 
         system("cls");
 
@@ -76,6 +56,7 @@ int main(){
         system("cls");
 
     }while(opcao==1);
+
     return 0;
 }
 
@@ -217,4 +198,30 @@ int ganhadorDiagSecundaria(){
         return 2;
     }
     return 0;
+}
+
+int jogar(int jogadas, int jogador, int ganhou){
+
+    do{
+
+        imprimirJogo();
+
+        lerCoordenadas(jogador);
+
+        jogadas += salvarCoordenadas(jogador);
+
+        jogador =atualizarJogador(jogador);
+
+        ganhou += ganhouPorLinhas();
+
+        ganhou += ganhouPorColunas();
+
+        ganhou += ganhadorDiagPrincipal();
+
+        ganhou += ganhadorDiagSecundaria();
+
+        system("cls");
+
+    }while(ganhou == 0 && jogadas <9);
+    return ganhou;
 }
