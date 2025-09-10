@@ -13,8 +13,13 @@ void lerCoordenadas(int jogador);
 
 int ganhouPorLinhas();
 int ganhouPorColunas();
+
 int ganhouPorLinha(char c);
+int ganhadorDiagPrincipal();
 int ganhouPorColuna(char c);
+int ganhadorDiagSecundaria();
+int ganhouDiagPrincipal(char c);
+int ganhouDiagSecundaria(char c);
 int atualizarJogador(int jogador);
 int salvarCoordenadas(int jogador);
 
@@ -46,22 +51,9 @@ int main(){
 
             ganhou = ganhouPorColunas();
 
+            ganhou = ganhadorDiagPrincipal();
 
-            if(tabuleiro[0][0] == 'O' && tabuleiro[1][1] == 'O' && tabuleiro[2][2] == 'O'){
-                ganhou = 1;
-            }
-
-            if(tabuleiro[0][0] == 'X' && tabuleiro[1][1] == 'X' && tabuleiro[2][2] == 'X'){
-                ganhou = 2;
-            }
-
-            if(tabuleiro[0][2] == 'O' && tabuleiro[1][1] == 'O' && tabuleiro[2][0] == 'O'){
-                ganhou = 1;
-            }
-
-            if(tabuleiro[0][2] == 'X' && tabuleiro[1][1] == 'X' && tabuleiro[2][0] == 'X'){
-                ganhou = 2;
-            }
+            ganhou = ganhadorDiagSecundaria();
 
             system("cls");
 
@@ -186,6 +178,42 @@ int ganhouPorColunas(){
         return 1;
     }
     if(ganhouPorColuna('X') == 1){
+        return 2;
+    }
+    return 0;
+}
+
+int ganhouDiagPrincipal(char c){
+
+    if(tabuleiro[0][0] == c && tabuleiro[1][1] == c && tabuleiro[2][2] == c){
+        return 1;
+    }
+    return 0;
+}
+
+int ganhadorDiagPrincipal(){
+    if(ganhouDiagPrincipal('O') == 1){
+        return 1;
+    }
+    if(ganhouDiagPrincipal('X') == 1){
+        return 2;
+    }
+    return 0;
+}
+
+int ganhouDiagSecundaria(char c){
+
+    if(tabuleiro[0][2] == c && tabuleiro[1][1] == c && tabuleiro[2][0] == c){
+        return 1;
+    }
+    return 0;
+}
+
+int ganhadorDiagSecundaria(){
+    if(ganhouDiagSecundaria('O') == 1){
+        return 1;
+    }
+    if(ganhouDiagSecundaria('X') == 1){
         return 2;
     }
     return 0;
