@@ -8,6 +8,7 @@ int linha, coluna;
 char tabuleiro[tam][tam];
 
 void imprimirJogo();
+int ganhouPorLinhas()
 void inicializarJogo();
 void lerCoordenadas(int jogador);
 
@@ -39,12 +40,7 @@ int main(){
 
             jogador =atualizarJogador(jogador);
 
-            if(ganhouPorLinha('O') == 1){
-                ganhou = 1;
-            }
-            if(ganhouPorLinha('X') == 1){
-                ganhou = 2;
-            }
+            ganhou = ganhouPorLinhas();
 
                 for(int i = 0; i < tam; i++){
                     if(tabuleiro[0][i] == 'O' && tabuleiro[1][i] == 'O' && tabuleiro[2][i] == 'O')
@@ -170,3 +166,15 @@ int ganhouPorLinha(char c){
     }
     return 0;
 }
+
+int ganhouPorLinhas(){
+    if(ganhouPorLinha('O') == 1){
+        return 1;
+    }
+    if(ganhouPorLinha('X') == 1){
+        return 2;
+    }
+    return 0;
+}
+
+
