@@ -8,11 +8,13 @@ int linha, coluna;
 char tabuleiro[tam][tam];
 
 void imprimirJogo();
-int ganhouPorLinhas()
 void inicializarJogo();
 void lerCoordenadas(int jogador);
 
+int ganhouPorLinhas();
+int ganhouPorColunas();
 int ganhouPorLinha(char c);
+int ganhouPorColuna(char c);
 int atualizarJogador(int jogador);
 int salvarCoordenadas(int jogador);
 
@@ -42,33 +44,26 @@ int main(){
 
             ganhou = ganhouPorLinhas();
 
-                for(int i = 0; i < tam; i++){
-                    if(tabuleiro[0][i] == 'O' && tabuleiro[1][i] == 'O' && tabuleiro[2][i] == 'O')
-                        ganhou = 1;
-                }
+            ganhou = ganhouPorColunas();
 
-                for(int i = 0; i < tam; i++){
-                    if(tabuleiro[0][i] == 'X' && tabuleiro[1][i] == 'X' && tabuleiro[2][i] == 'X')
-                        ganhou = 1;
-                }
 
-                if(tabuleiro[0][0] == 'O' && tabuleiro[1][1] == 'O' && tabuleiro[2][2] == 'O'){
-                    ganhou = 1;
-                }
+            if(tabuleiro[0][0] == 'O' && tabuleiro[1][1] == 'O' && tabuleiro[2][2] == 'O'){
+                ganhou = 1;
+            }
 
-                if(tabuleiro[0][0] == 'X' && tabuleiro[1][1] == 'X' && tabuleiro[2][2] == 'X'){
-                    ganhou = 2;
-                }
+            if(tabuleiro[0][0] == 'X' && tabuleiro[1][1] == 'X' && tabuleiro[2][2] == 'X'){
+                ganhou = 2;
+            }
 
-                if(tabuleiro[0][2] == 'O' && tabuleiro[1][1] == 'O' && tabuleiro[2][0] == 'O'){
-                    ganhou = 1;
-                }
+            if(tabuleiro[0][2] == 'O' && tabuleiro[1][1] == 'O' && tabuleiro[2][0] == 'O'){
+                ganhou = 1;
+            }
 
-                if(tabuleiro[0][2] == 'X' && tabuleiro[1][1] == 'X' && tabuleiro[2][0] == 'X'){
-                    ganhou = 2;
-                }
+            if(tabuleiro[0][2] == 'X' && tabuleiro[1][1] == 'X' && tabuleiro[2][0] == 'X'){
+                ganhou = 2;
+            }
 
-                system("cls");
+            system("cls");
 
         }while(ganhou == 0 && jogadas <9);
 
@@ -177,4 +172,21 @@ int ganhouPorLinhas(){
     return 0;
 }
 
+int ganhouPorColuna(char c){
 
+    for(int i = 0; i < tam; i++){
+        if(tabuleiro[0][i] == c && tabuleiro[1][i] == c && tabuleiro[2][i] == c)
+            return 1;
+    }
+    return 0;
+}
+
+int ganhouPorColunas(){
+    if(ganhouPorColuna('O') == 1){
+        return 1;
+    }
+    if(ganhouPorColuna('X') == 1){
+        return 2;
+    }
+    return 0;
+}
